@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ----------------------------------------------------------------------------
 #  Copyright 2001-2006 The Apache Software Foundation.
 #
@@ -18,7 +18,7 @@
 #   Copyright (c) 2001-2002 The Apache Software Foundation.  All rights
 #   reserved.
 
-#   Copyright (C) 2011-2015 University of Waikato, Hamilton, NZ
+#   Copyright (C) 2011-2019 University of Waikato, Hamilton, NZ
 
 BASEDIR=`dirname $0`/..
 BASEDIR=`(cd "$BASEDIR"; pwd)`
@@ -84,16 +84,24 @@ if $cygwin; then
   [ -n "$HOME" ] && HOME=`cygpath --path --windows "$HOME"`
   [ -n "$BASEDIR" ] && BASEDIR=`cygpath --path --windows "$BASEDIR"`
   [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
-  [ -n "$AGENT" ] && AGENT=`cygpath --path --windows "$AGENT"`
 fi
 
 # check options
-MEMORY=512m
 MAIN=com.github.fracpete.removegpl.Main
+ARGS=
+WHITESPACE="[[:space:]]"
+for ARG in "$@"
+do
+  if [[ $ARG =~ $WHITESPACE ]]
+  then
+    ARGS="$ARGS \"$ARG\""
+  else
+    ARGS="$ARGS $ARG"
+  fi
+done
 
 # launch class
 "$JCMD" \
   -classpath "$CLASSPATH" \
-  -Dbasedir="$BASEDIR" \
-  -Xmx$MEMORY \
-  $MAIN
+  $MAIN \
+  $ARGS

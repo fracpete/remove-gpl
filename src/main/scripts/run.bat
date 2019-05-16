@@ -16,7 +16,7 @@
 @REM
 
 @REM ----------------------------------------------------------------------------
-@REM Copyright (C) 2011-2015 University of Waikato, Hamilton, NZ
+@REM Copyright (C) 2011-2019 University of Waikato, Hamilton, NZ
 @REM ----------------------------------------------------------------------------
 
 @echo off
@@ -25,9 +25,18 @@ set ERROR_CODE=0
 
 @REM Slurp the command line arguments.  This loop allows for an unlimited number
 @REM of arguments (up to the command line limit, anyway).
-set MEMORY=512m
 set MAIN=com.github.fracpete.removegpl.Main
 set BASEDIR=%~dp0\..
+set CMD_LINE_ARGS=
+:Loop
+  if "%~1"=="" goto AssembleCmd
+  set CMD_LINE_ARGS=%CMD_LINE_ARGS% %1
+
+:next
+  shift
+  goto Loop
+
+:AssembleCmd
 set JCMD=java
 if not "%JAVA_HOME%"=="" set JCMD="%JAVA_HOME%\bin\java"
 if not "%JAVACMD%"=="" set JCMD=%JAVACMD%
@@ -39,7 +48,7 @@ goto endInit
 @REM Reaching here means variables are defined and arguments have been captured
 :endInit
 
-%JCMD% -Xmx%MEMORY% -classpath %CLASSPATH% -Dbasedir="%BASEDIR%" %MAIN%
+%JCMD% -classpath %CLASSPATH% %MAIN% %CMD_LINE_ARGS%
 if ERRORLEVEL 1 goto error
 goto end
 
