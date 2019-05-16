@@ -206,7 +206,7 @@ public class Main
     parser.addArgument("--dir")
       .type(Arguments.fileType().verifyExists().verifyIsDirectory())
       .dest("dir")
-      .metavar("dir")
+      .metavar("<dir>")
       .required(true)
       .help("The input directory with the source code files.");
     parser.addArgument("--recursive")
@@ -219,10 +219,10 @@ public class Main
       .required(false)
       .dest("nodefaultpatterns")
       .help("Whether to disable the use of the default patterns.");
-    parser.addArgument("--pattern-file")
+    parser.addArgument("patternfile")
       .type(Arguments.fileType().verifyExists().verifyIsFile())
-      .dest("patternfile")
-      .nargs("+")
+      .nargs("*")
+      .metavar("<file>")
       .required(false)
       .help("The pattern files to apply (eg when not using the built-in ones or additional ones).");
     parser.addArgument("--verbose")
