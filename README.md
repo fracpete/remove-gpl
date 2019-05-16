@@ -49,3 +49,15 @@ find1=.*This program is.*
 # the 1st replace pattern
 replace1=
 ```
+
+## Maven
+
+Add the following artifact to your dependencies of your `pom.xml`:
+
+```xml
+    <dependency>
+      <groupId>com.github.fracpete</groupId>
+      <artifactId>remove-gpl</artifactId>
+      <version>0.0.1</version>
+    </dependency>
+```
