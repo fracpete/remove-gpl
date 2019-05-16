@@ -2,7 +2,25 @@
 Command-line tool that strips the GPL preamble from source codes files (eg when providing a commercial release).
 
 ## Command-line
-TODO
+```
+usage: com.github.fracpete.removegpl.Main
+       [-h] --dir dir [--recursive] [--no-default-patterns]
+       [--pattern-file PATTERNFILE [PATTERNFILE ...]] [--verbose]
+       [--dry-run]
+
+named arguments:
+  -h, --help             show this help message and exit
+  --dir dir              The input directory with the source code files.
+  --recursive            Whether to process files recursively.
+  --no-default-patterns  Whether  to  disable  the   use   of  the  default
+                         patterns.
+  --pattern-file PATTERNFILE [PATTERNFILE ...]
+                         The pattern files to apply  (eg when not using the
+                         built-in ones or additional ones).
+  --verbose              Whether to process files in verbose mode.
+  --dry-run              Files don't get updated when modified.
+```
+
 
 ## Pattern file example
 
