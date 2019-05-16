@@ -1,0 +1,23 @@
+# Pattern file for processing Java, JFlex and CUP files
+filepattern=.*\\.(java|jflex|cup)
+numpatterns=10
+find1= \\*.*This program is.*
+replace1= *
+find2= \\*.*terms of the GNU.*
+replace2= *
+find3= \\*.*Free Software Foundation.*
+replace3= *
+find4= \\*.*any later version.*
+replace4= *
+find5= \\*.*program is distributed in .*
+replace5= *
+find6= \\*.*WITHOUT ANY WARRANTY.*
+replace6= *
+find7= \\*.*MERCHANTABILITY or FITNESS.*
+replace7= *
+find8= \\*.*Public License for more details.*
+replace8= *
+find9= \\*.*received a copy .*
+replace9= *
+find10= \\*.*along with this program.*
+replace10= *
