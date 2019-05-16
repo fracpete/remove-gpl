@@ -21,10 +21,18 @@ named arguments:
   --dry-run              Files don't get updated when modified.
 ```
 
+## Default pattern files
 
-## Pattern file example
+The following pattern files are built in:
 
-Here is an example of the pattern file (in Java properties format) for text files:
+* [java_jflex_cup.props](src/main/resources/com/github/fracpete/removegpl/java_jflex_cup.props) 
+* [python.props](src/main/resources/com/github/fracpete/removegpl/python.props) 
+
+
+## Pattern file format
+
+Here is the [format of the pattern files](src/main/resources/com/github/fracpete/removegpl/template.props) 
+(Java properties format):
 
 ```properties
 # Template file for patterns
